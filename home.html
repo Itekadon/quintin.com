@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="home.css">
+  <link rel="icon" type="image/jpeg" href="./logo.jpeg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./home_animations.css">
+  <style>
+    .chat-bot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+        }
+
+        .chat-bot {
+            position: fixed;
+            bottom: 50px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 99;
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+        }
+
+        .chat-content {
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .chat-input {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .chat-input button {
+            background-color: #333;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Animated loading dots for bot response */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            position: relative;
+        }
+
+        .loading div {
+            position: absolute;
+            border-radius: 50%;
+            background: #333;
+            width: 6px;
+            height: 6px;
+            animation: loading 1.2s infinite;
+        }
+
+        .loading div:nth-child(1) {
+            left: 0;
+            animation-delay: -0.3s;
+        }
+
+        .loading div:nth-child(2) {
+            left: 6px;
+            animation-delay: -0.15s;
+        }
+
+        .loading div:nth-child(3) {
+            left: 12px;
+        }
+
+        @keyframes loading {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        /* Blurry Text Animation */
+        .blurry-text {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .blurry-text.visible {
+            opacity: 0.5;
+        }
+        .chat-bot-button img {
+            width: 28px; /* Smaller size */
+            height: 28px; /* Smaller size */
+            object-fit: cover; /* Keep the original aspect ratio */
+            border-radius: 50%;
+        }
+  </style>
+  <script>
+    var currentIndex = 0;
+    var images = document.querySelectorAll('.image-container');
+
+    function showImage(index) {
+        images.forEach(function(image) {
+            image.classList.remove('active');
+        });
+
+        images[index].classList.add('active');
+    }
+
+    function nextImage() {
+        currentIndex++;
+        if (currentIndex >= images.length) {
+            currentIndex = 0;
+        }
+        showImage(currentIndex);
+    }
+
+    function startSlideshow() {
+        setInterval(nextImage, 3000);
+    }
+
+    startSlideshow();
+  </script>
+
+</head>
+<body class="gradient">
+<header class =  " container "> 
+    <div class = "ccontainer" >
+        <div class = "website-name">
+            <h1>DadsUnityHub</h1>
+        </div>
+        <div class="navigation-links">
+            <nav>
+                 <ul>
+                    <li><a href="home.html">Home</a></li>
+                     <!-- <li><a href="http://127.0.0.1:5500/home.html">About Us!</a></li> -->
+                    <!-- <li><a href="login2.php">Login!</a></li> -->
+                    <!-- <li><a href="Testimonials.html">Testimonials</a></li> -->
+                    <!-- <li><a href="books.html">Resources</a></li> -->
+                    <li><a href="login2.php" class="button" style="color: white;"> Login </a></li>
+                    <li><a href="signUp.php" class="button" style="color: whitesmoke;">Join</a></li>
+                </ul>
+            </nav>
+            
+        </div>
+      </div>
+         
+ 
+</header>
+
+<main>
+  <h2>Our Team</h2>
+
+  <p style="font-size: large;font-weight: bold;">Meet the team behind this project.</p>
+
+    <div class="image-gallery">
+      <div class="image-container" ><img src="./KAMO.jpg"   alt="Kamo">
+        <p>Kamogelo  Ratsela <br>Project Manager</p>
+      </div>
+      <div class="image-container" ><img src="./Mr elvis.jpg"   alt="Elvis">
+        <p>Elvis M. NDLOVU <br>Back-end Developer</p>
+      </div>
+      <div class="image-container" ><img src="./Mr stepheen.jpg"   alt="Stephen">
+        <p>Stephen <br> Front-end Developer</p>
+      </div>
+      <div class="image-container" ><img src="./ms amo.jpg"   alt="Amo">
+        <p>Amogelang NKOANA <br>Back-end Developer</p>
+      </div>
+      <div class="image-container" ><img src="./QUINTIN.jpg"   alt="Quintin">
+        <p>Don Q. ITEKA <br>Data Scientist</p>
+      </div>
+      <div class="image-container" ><img src="Anele.jpg"   alt="Anele">
+        <p>Anele MHLANGA <br>Front-end Developer</p>
+      </div>
+      <div class="image-container" ><img src="./KAMO.jpg"   alt="Kamo">
+        <p>Kamogelo Ratsela <br>Project Manager</p>
+      </div>
+      <div class="image-container" ><img src="./Mr elvis.jpg"   alt="Elvis">
+        <p>Elvis M. NDLOVU <br>Back-end Developer</p>
+      </div>
+      <div class="image-container" ><img src="./Mr stepheen.jpg"   alt="Stephen">
+        <p>Stephen <br> Front-end Developer</p>
+      </div>
+      <div class="image-container" ><img src="./ms amo.jpg"   alt="Amo">
+        <p>Amogelang NKOANA <br>Back-end Developer</p>
+      </div>
+      <div class="image-container" ><img src="./QUINTIN.jpg"   alt="Quintin">
+        <p>Don Q. ITEKA <br>Data Scientist</p>
+      </div>
+      <div class="image-container" ><img src="Anele.jpg"   alt="Anele">
+        <p>Anele MHLANGA <br>Front-end Developer</p>
+      </div>
+    </div>  <br><br><br>
+    
+    <div id="content">
+        <article>
+          
+            <!-- <img src="Dady Image.jpg" alt="Image Description" class="right-image" width="300px" height="20px"/> -->
+            
+
+           
+            <h3>About Us</h3>
+
+            <p style="color: rgb(20, 20, 22); font-size: larger;">Dads Unity Hub(DUH) is a community dedicated to providing support and resources to single fathers who are going through the challenging journey of raising children alone after the loss of a partner.</p> 
+            
+            <div id="moreContent"> 
+          
+              <p style="font-size: larger;">Our platform enables single fathers to connect with each other, share experiences, find guidance, and access a wealth of information they need.</p>
+
+              <p style="font-size: larger;">We also offer a variety of features to help them navigate the path of single parenting, which include the following:</p>
+              <ul style="font-size: medium;">
+                <li>Woman's Gallery - to honor memories of their partners who have since passed</li>
+                <li>Men's Gallery - to celebrate the moments they and their children share</li>
+                <li>Blog - to share personal stories from other dads and their children</li>
+                <li>Dating Resources - to assist them with finding companionship or a partner in crime when they are ready</li>
+                <li>Nanny's Profiles - to help them find a reliable child minder, housekeeper or day cares.</li>
+              </ul>
+              <p style="font-size: large;">At DUH , We believe that support should be accessible to everyone, anytime, anywhere. So don't hesitate— <a href="signUp.php">create your account</a> today and become part of a community that gets it, a community that's here for you every step of the way as you embark on this brave journey of single fatherhood.</p>
+          </div>
+          <button class="show-more-button" onclick="showMore()">Show More</button>
+
+        </article>
+    </div>
+    <div class="con">
+      <a href="mailto:223210182@student.uj.ac.za" target="_blank"><i class="fa-regular fa-circle-envelope"></i></a>
+      <a href="https://wa.me/+27697955468" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+    <div class="chat-bot-button" onclick="toggleChat()">
+      <img src="Images/attachment.gif">
+  </div>
+
+  <!-- Chat Window -->
+  <div class="chat-bot" id="chat-bot">
+      <div class="chat-header">
+          <span>Virtual Assistant</span>
+          <button onclick="clearChat()">✖️</button>
+      </div>
+
+      <div class="chat-content" id="chat-content">
+          <div id="blurry-text-overlay"></div> <!-- For rotating text -->
+      </div>
+
+      <div class="chat-input">
+          <input type="text" id="user-input" placeholder="Type your message here..." />
+          <button onclick="sendMessage()">Send</button>
+      </div>
+  </div>
+  <script src="script.js"></script>
+</main>
+
+<footer>
+    <p><nav>
+        <ul>
+          <li><a href="Blog.html">Our Blog!</a></li>
+          <li><a href="FAQs.html">FAQs</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="PrivacyPolicy.html">Privacy Policy</a></li>
+          <li><a href="#sitemap">Site Map</a></li>
+          <li><a href="https://www.dsd.gov.za/index.php "> Social Development</a></li>
+          </ul>
+      </nav>
+    </p>
+        
+      
+    <p>&copy; 2024 DadsUnityHub.co.za</p>
+    <p>All Rights Reserved</p>
+  </footer>
+
+<script src="home.js"></script>
+</body>
+</html>
